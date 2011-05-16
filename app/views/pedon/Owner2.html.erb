@@ -1,0 +1,38 @@
+<%= render :partial => 'header' %>
+<h1>SoilData</h1>
+<section class="SoilData" id="0.2">
+	<div class="metadata">
+		<h2>Application Information</h2>
+		<ul>
+			<li id="serviceURL"><a href="<%= @urls.service %>">Application Home</a></li>
+			<li id="wadl"><a href="<%= @urls.help %>">Application Description</a></li>
+			<li id="collections"><a href="<%= @urls.collections %>">Soil Data Collections</a></li>
+		</ul>
+	</div>
+	<div class="owner">
+		<h2>Owner</h2>
+		<p id="website"><a href="http://sis.agr.gc.ca/cansis">Owner's website</a></p>
+		<h3>Contact</h3>
+		<dl>
+			<dt>Name</dt>
+			<dd id="name">Peter Schut</dd>
+			<dt>Title</dt>
+			<dd id="title">Head, CanSIS</dd>
+			<dt>Email</dt>
+			<dd id="email">pschut@gmail.com</dd>
+			<dt>Phone</dt>
+			<dd id="phone">613-759-1874</dd>
+			<dt>FAX</dt>
+			<dd id="fax">613-759-1937</dd>
+			<dt>Address</dt>
+			<dd id="address">
+					<div id="DeliveryPoint">Room 1135, 960 Carling Avenue</div>
+					<div id="City">Ottawa</div>
+					<div id="AdministrativeArea">ON</div>
+					<div id="Country">Canada</div>
+					<div id="PostalCode">K1AOC6</div>
+			</dd>
+		</dl>
+	</div>
+</section>
+<%= render :partial => 'footer' %>

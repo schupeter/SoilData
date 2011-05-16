@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone='yes'?>
+<urlset>
+   <url xmlns:urlset="http://www.yoursite.org/2009/urlset" xml:lang="en">
+      <loc>http://www.google.com/</loc>
+      <lastmod>2009-07-21T16:34:19+08:00</lastmod>
+      <changefreq update="weekly">
+         <schedule>
+            <sunday>Sunday-Group</sunday>
+            <monday>Monday-Group</monday>
+            <tuesday>Tuesday-Group</tuesday>
+            <wednesday>Wednesday-Group</wednesday>
+            <thursday>Thursday-Group</thursday>
+            <friday>Friday-Group</friday>
+            <saturday>Saturday-Group</saturday>
+         </schedule>
+      </changefreq>
+      <priority set="1.00" />
+   </url>
+</urlset>

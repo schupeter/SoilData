@@ -1,0 +1,7 @@
+rename PEDON_LAYERS to pedonlayers ....
+
+mysql -uroot -p pedon_development < ~/httpd/soil/db/pedon_layers.sql
+mysql -uroot -p pedon_development < ~/httpd/soil/db/pedon_projects.sql
+mysql -uroot -p pedon_development < ~/httpd/soil/db/pedon_properties.sql
+mysql -uroot -p pedon_development < ~/httpd/soil/db/pedon_sites.sql
+mysql -uroot -p pedon_development < ~/httpd/soil/db/pedon_values.sql

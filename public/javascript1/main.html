@@ -1,0 +1,119 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title>Iframe Page</title>
+<meta name="author" content="DANI-USER : essential" />
+<style type="text/css">
+/* <![CDATA[ */
+td { text-align : center; }
+/* ]]> */
+</style>
+<script type="text/javascript">
+// <![CDATA[
+   var check = ( Boolean((( XMLHttpRequest ) ? 1 : 0 )));
+   var handleMyRequest = function() {
+/*******************************
+       AJAX POWERED
+********************************
+  - I've keep all of the basic method <strong class="highlight">with</strong> innerHTML.
+   - So that you can easily go through from each line's
+  - Just concentrate on this function and forget about everything that is outside of this block.
+
+  http://www.daniweb.com/
+*******************************/
+   var seq = {
+   4 : "complete",
+   complete : 4 };   
+   if ( seq[ this.readyState ] ) {
+      var xDoc = this.responseXML;
+      var xNode = xDoc.getElementsByTagName( "*" );
+      var xRoot = xDoc.getElementsByTagName( xDoc.documentElement.nodeName );
+      var xChild = ( function( childX, rootX ) {
+      if ( arguments.length < 2 ) {
+         return xRoot[0].getElementsByTagName( childX ); }
+       else {
+         return rootX.getElementsByTagName( childX ); }
+       } );
+      var xDate = new Date();
+      var xDiv = document.getElementById("main");
+   // You can start editing below this line \\
+      var xTable = "";
+      for ( var x = 0; x < xRoot.length; x++ ) { 
+         xTable += '\n<table frame="box" width="100%" rules="all" cellpadding="5" cellspacing="3" border="1">\n';
+         xTable += "<thead>\n";
+         for ( y = 0; y < xChild( "url" ).length; y++ ) {
+            xTable += "<tr>\n";
+            xTable += "<th>Location</td>\n";
+            xTable += "<th>Last Modified</th>\n";
+            xTable += "<th>Schedule</th>\n";
+            xTable += "<th>Priority</th>\n";
+            xTable += "</tr>\n";
+            xTable += "</thead>\n";
+            xTable += "<tbody>\n";
+            xTable += "<tr>\n";
+            xTable += "<td>" + String( xChild( "loc" )[ y ].childNodes[0].nodeValue ).link( xChild( "loc" )[ y ].childNodes[0].nodeValue ) + "</td>";
+            xTable += "<td>" + xChild( "lastmod" )[ y ].childNodes[0].nodeValue + "</td>";
+            xTable += "<td>" + xChild( [ "sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday" ][ xDate.getDay() ] )[ y ].childNodes[ 0 ].nodeValue + "</td>"; // Weekday scheduling.
+               xTable += "<td>" + xChild( "priority" )[ y ].getAttribute( "set" ) + "</td>\n";   
+         } xTable += "</tr>\n";
+      } xTable += "</tbody>\n"; 
+      xTable += "</table>\n";
+      xDiv.innerHTML = xTable;
+   }  
+};
+
+/* WARNING! Please do not edit anything beyond this block */
+   var XHR = function( method, url, callback ) {
+   this.createRequest = null;
+   this.xml = 0;
+   this.method = method || "GET";
+   this.url = url || null;
+   this.callback = callback || null;
+   if ( arguments.length < 3 ) {
+         return false;
+   } this.xmlDoc = ( function() {
+      try {
+         if ( check ) {
+            this.xml = new XMLHttpRequest();
+         } else {
+            try {
+            var client = [ "MSXML2.XMLHTTP.5.0", "MSXML2.XMLHTTP.4.0", "MSXML2.XMLHTTP.3.0", "MSXML2.XMLHTTP", "Microsoft.XMLHTTP" ];
+            for ( var i = 0; i < client.length; ++i ) {
+               if ( new ActiveXObject( client[ i ] )) {
+                  this.xml = new ActiveXObject( client[ i ] );
+                  break;
+               }
+            }
+            } catch( e ) {
+               this.xml = 0;
+            }
+         }
+      } catch( er ) {
+         if ( "createRequest" in window ) 
+            this.xml = createRequest();
+         else
+            this.xml = 0;
+      } return (( this.xml ) ? this.xml : 0 );
+   } )();
+   if ( this.xmlDoc ) {
+      this.createRequest = ( function( xhr, callback, url, method ) {
+         (( "overrideMimeType" in xhr ) ? xhr.overrideMimeType("text/xml") : xhr );
+         xhr.onreadystatechange = callback;
+         xhr.open( method, encodeURI( url ), true );
+         (( method === "POST" && "setRequestHeader" in xhr ) ? xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8;") : xhr );
+         xhr.send((( method === "POST" ) ? " " : null )); 
+      } )( this.xmlDoc, this.callback, this.url, this.method );
+   } return this.createRequest;
+}; onload = function() {
+new XHR( "GET", "url.xml", handleMyRequest ); // You can create new instance of request by calling out, the same procedure above. 
+}
+// ECMAScript v1.5 ]]>
+</script>
+</head>
+<body>
+<div id="main"></div>
+</body>
+</html>

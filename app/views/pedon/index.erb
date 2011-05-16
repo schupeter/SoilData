@@ -1,0 +1,80 @@
+<%= render :partial => 'header' %>
+<h1>Pedon Data Application</h1>
+
+<br/>
+<p>This site is a web application that provides access to soil information.  It is populated with some sample data from the <a href="http://sis.agr.gc.ca/cansis/">Canadian Soil Information Service</a>.  The service interface is completed described <a href="/SoilData/wadl.xml">here</a> and a sample client is available <a href="/Client/">here</a>. </p>
+
+<p>The application is based on a proposal for a Soil Markup Language (SoilML).  The goals of SoilML are as follows:</p>
+
+<h4>Goals</h4>
+<ol>
+	<li>facilitate the exchange of soil data around the globe</li>
+	<li>support the archiving of data</li>
+	<li>can act to define pedon information as well as polygon information.</li>
+</ol>
+ 
+<h4>SoilML Requirements</h4>
+
+<ol>
+	<li>simple - easy to read, learn, apply, and use</li>
+	<li>easy to generate and ingest </li>
+	<li>self documenting</li>
+	<li>includes standardized attributes for international use</li>
+	<li>extensible for national/regional purposes (i.e. supports custom attributes)</li>
+	<li>applicable to sites (pedons) as well as polygons</li>
+	<li>structure should support one site as well as multiple sites</li>
+	<li>can act as a static file repository for archival purposes</li>
+</ol>
+
+
+<hr/>
+<h2>Basic documents</h2>
+<p>SoilML consists of the following basic documents:</p>
+<ul>
+	<li>the SoilData/Owner document,</li>
+	<li>the SoilData/Collections document, and</li>
+	<li>the Help document.</li>
+</ul>
+<p>These documents are described below.</p>
+
+<h3>The SoilData/Owner document</h3>
+<p>The Owner document describes the owner of the service and contains links to both the Help and the Collections documents.  An example is found <a href="/SoilData/Owner">here</a>.</p> 
+
+<h3>The SoilData/Collections document</h3>
+<p>All of the soil information is accessible from the Collections document, through the links to one or more Collection documents it identifies.  Soils are organized into collections on the basis of either their attribute content, purpose, or collection methodology.  All soils in a collection must share a common set of attribute definitions, although the data content for any particular soil may not include all of the defined attributes.  Thus each collection may contain completely different types of soil attribute information.</p>
+<p>An example of a Collections document is found <a href="/SoilData/Collections">here</a>.  </p>
+
+<h3>The Help document</h3>
+<p>The Help document provides information that new users can access in order to understand the SoilML service.  The current page serves as the Help document for this demonstration service.</p> 
+
+<hr/>
+<h2>Documents for each collection</h2>
+
+<p>Each collection contains the following set of documents:</p>
+<ul>
+	<li>the Collection document,</li>
+	<li>the Collection/Properties document, and</li>
+	<li>the Collection/Soils document.</li>
+</ul>
+<p>These documents are described below.</p>
+
+<h3>The Collection document</h3>
+<p>A Collection document provides general information describing a specific collection, and links to the Documentation and Soils documents.  An example of a Collection document is found <a href="/SoilData/Collection/1">here</a>.  </p>
+
+<h3>The Collection/Properties document</h3>
+<p>A Properties document contains links to individual property documents that contain descriptions of each of the attributes that may be identified for each soil in the collection.  Each collection is thus self-documenting.  An example of a Properties document is found <a href="/SoilData/Collection/1/Properties">here</a>.  </p>
+
+<h3>The Collection/Soils document</h3>
+<p>A Soils document contains links to all of the soils found within the collection.  An example of a Soils document is found <a href="/SoilData/Collection/1/Soils">here</a>.  </p>
+
+<hr/>
+<h2>The Property document</h2>
+
+<p>Each parameter is described in a Property document.  An example of a Property document is found <a href="/SoilData/Collection/1/Property/R_ON_RPT.ORG_CARBON">here</a>.  </p>
+
+<hr/>
+<h2>The Soil document</h2>
+
+<p>Each soil is described in a Soil document.  This document contains information pertaining to a soil as a whole, namely classification, geographic location, and general site characteristics, as well as information pertaining to a individual soil layers, such as depth, texture, organic carbon, and other visible or measurable soil parameters.  An example of a Soil document is found <a href="/SoilData/Collection/1/Soil/0000497">here</a>.  </p>
+
+<%= render :partial => 'footer' %>

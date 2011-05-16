@@ -1,0 +1,74 @@
+<%= render :partial => 'header' %>
+<h1>SoilData</h1>
+<section class="SoilData" id="0.2">
+	<div class="metadata">
+		<h2>Application Information</h2>
+		<ul>
+			<li id="serviceURL"><a href="<%= @urls.service %>">Application Home</a></li>
+			<li id="wadl"><a href="<%= @urls.help %>">Application Description</a></li>
+			<li id="collections"><a href="<%= @urls.collections %>">Soil Data Collections</a></li>
+			<li id="collection"><a href="<%= @urls.collection %>"><%= @collection.Title %></a></li>
+			<li id="properties"><a href="<%= @urls.properties %>">Soil Properties</a></li>
+			<li id="soils"><a href="<%= @urls.soils %>">Soil Profiles</a></li>
+		</ul>
+	</div>
+	<div class="soilProfile">
+		<h2>Soil Profile</h2>
+		<table>
+		<tr>
+			<td id="property_id">Identifier</td>
+			<td id="soil_id"><%= @soilId %></td>
+			<td id="title"></td>
+				<td id="unit"></td>
+		</tr>
+		<% for soildata in @soildata do %>
+			<tr>
+				<td id="property_id"><%= soildata.Property_id%></td>
+				<td id="value"><%= soildata.Value %></td>
+				<td id="title"><%= @propertyTitles[soildata.Property_id] %></td>
+				<td id="unit"><%= @propertyUnits[soildata.Property_id] %></td>
+			</tr>
+		<% end %>
+		</table>
+		
+		<table border="1">
+			<tr><th>Layer Number</th><% for layer in @pedonlayers do %><th><%= layer.layer_no %></th><% end %><th></th></tr>
+			<tr><th>Upper Depth</th><% for layer in @pedonlayers do %><td><%= layer.u_depth %></td><% end %><th>cm</th></tr>
+			<tr><th>Lower Depth</th><% for layer in @pedonlayers do %><td><%= layer.l_depth %></td><% end %><th>cm</th></tr>
+			<tr><th>Horizon Master Designator</th><% for layer in @pedonlayers do %><td><%= layer.hzn_mas %></td><% end %><th></th></tr>
+			<tr><th>Horizon Suffix</th><% for layer in @pedonlayers do %><td><%= layer.hzn_suf %></td><% end %><th></th></tr>
+			<tr><th>Horizon Modifier</th><% for layer in @pedonlayers do %><td><%= layer.hzn_mod %></td><% end %><th></th></tr>
+			<tr><th>Horizon Lithology</th><% for layer in @pedonlayers do %><td><%= layer.hzn_lit %></td><% end %><th></th></tr>
+			<% properties = Array.new %>
+			<% for value in @pedonvalues do properties.push value.property_id end %>
+			<% for property_id in properties.uniq do %>
+			<tr>
+				<th><a href="<%= @urls.propertyBase %><%= property_id %>"><%= @propertyTitles[property_id]%></th>
+				<% for layer in @pedonlayers do %><td><% for value in @pedonvalues do %><% if property_id == value.property_id and layer.layer_no == value.layer_no then %><%= value.value %><% end %><% end %></td><% end %>
+				<th><%= @propertyUnits[property_id] %></th>
+			</tr>
+			<% end %>
+		</table>
+		
+		<ul id="layers">
+			<% for layer in @pedonlayers do %>
+			<h3>Layer <%= layer.layer_no %></h3>
+				<table>
+					<tr><th>Upper Depth</th><td><%= layer.u_depth %></td></tr>
+					<tr><th>Lower Depth</th><td><%= layer.l_depth %></td></tr>
+					<tr><th><a href="<%= @urls.propertyBase %>HZN_MAS">Horizon Master Designator</a></th><td><%= layer.hzn_mas %></td></tr>
+					<tr><th><a href="<%= @urls.propertyBase %>HZN_SUF">Horizon Suffix</a></th><td><%= layer.hzn_suf %></td></tr>
+					<tr><th><a href="<%= @urls.propertyBase %>HZN_MOD">Horizon Modifier</a></th><td><%= layer.hzn_mod %></td></tr>
+					<tr><th><a href="<%= @urls.propertyBase %>HZN_LIT">Horizon Lithology</a></th><td><%= layer.hzn_lit %></td></tr>
+					<% for value in @pedonvalues do %>
+						<% if layer.layer_no == value.layer_no then %>
+							<tr><th><a href="<%= @urls.propertyBase %><%= value.property_id %>"><%= @propertyTitles[value.property_id]%>(<i><%= @propertyUnits[value.property_id] %></i>)</a></td><td><%= value.value %></td></tr>
+						<% end %>
+					<% end %>
+				</table>
+			end
+			<% end %>
+		</ul>
+	</div>
+</section>
+<%= render :partial => 'footer' %>

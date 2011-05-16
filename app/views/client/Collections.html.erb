@@ -1,0 +1,25 @@
+<%= render :partial => 'header' %>
+<h1>SoilML Client - Collections</h1>
+
+<p>Collections for the soil data repository at <a href="<%= @soilData.text_at("//SoilData/@serviceURL")%>"><%= @soilData.text_at("//SoilData/@serviceURL")%></a></p>
+
+<p>Collections:  <%= @params["SOILDATAURL"]%></p>
+
+<table cellpadding="5">
+	<tr>
+		<th>ID</th>
+		<th>Title</th>
+		<th>URL</th>
+	</tr>
+	<% for collection in @soilData.search("//SoilData/CollectionSet/Collection") do %>
+	<tr>
+		<td><%= collection.text_at("@id")%></td>
+		<td><%= collection.text_at("@title")%></td>
+		<td><a href="<%= @soilData.text_at("//SoilData/@serviceURL")%><%= collection.text_at("@collectionURL")%>">raw data</a></td>
+		<td><a href="Collection?CollectionURL=<%= @soilData.text_at("//SoilData/@serviceURL")%><%= collection.text_at("@collectionURL")%>">view</a></td>
+	</tr>
+	<% end %>
+</table>
+
+
+<%= render :partial => 'footer' %>

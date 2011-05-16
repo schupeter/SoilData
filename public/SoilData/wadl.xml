@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/schemas/wadl/1.0/xsl/wadl.xsl"?>
+<wadl:application xmlns:wadl="http://wadl.dev.java.net/2009/02"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://wadl.dev.java.net/2009/02 wadl.xsd ">
+	<wadl:doc title="Pedon Data Service Interface">This service provides access to soil pedon data.  It is based on a proposal for a Soil Markup Language (SoilML).</wadl:doc>
+	<wadl:resources base="http://localhost">
+	
+		<wadl:resource path="/SoilData/">
+			<wadl:doc>This resource introduces the service.</wadl:doc>
+			<wadl:method name="GET" id="getIntroduction">
+				<wadl:doc>The service introduction page.</wadl:doc>
+				<wadl:doc title="Example">/SoilData/</wadl:doc>
+				<wadl:request>
+				</wadl:request>
+				<wadl:response status="200">
+					<wadl:doc title="OK" />
+					<wadl:representation mediaType="text/html">
+						<wadl:doc title="HTML">Service introduction page.</wadl:doc>
+					</wadl:representation>
+				</wadl:response>
+				<wadl:response status="404">
+					<wadl:doc title="Not Found" />
+				</wadl:response>
+			</wadl:method>
+		</wadl:resource>
+
+		<wadl:resource path="/SoilData/Owner">
+			<wadl:doc>This resource provides information about the service owner.</wadl:doc>
+			<wadl:method name="GET" id="getOwner">
+				<wadl:doc>Information about the owner of this service.</wadl:doc>
+				<wadl:doc title="Example">/SoilData/Owner</wadl:doc>
+				<wadl:request>
+				</wadl:request>
+				<wadl:response status="200">
+					<wadl:doc title="OK" />
+					<wadl:representation mediaType="application/xml">
+						<wadl:doc title="XML">/SoilData/Owner document.</wadl:doc>
+					</wadl:representation>
+				</wadl:response>
+				<wadl:response status="404">
+					<wadl:doc title="Not Found" />
+				</wadl:response>
+			</wadl:method>
+		</wadl:resource>
+
+		<wadl:resource path="/SoilData/Collections">
+			<wadl:doc>This resource lists all of the collections of soil data found on this service.</wadl:doc>
+			<wadl:method name="GET" id="getListOfCollections">
+				<wadl:doc>A list of soil data collections found on this service.</wadl:doc>
+				<wadl:doc title="Example">/SoilData/Collections</wadl:doc>
+				<wadl:request>
+				</wadl:request>
+				<wadl:response status="200">
+					<wadl:doc title="OK" />
+					<wadl:representation mediaType="application/xml">
+						<wadl:doc title="XML">/SoilData/CollectionSet document.</wadl:doc>
+					</wadl:representation>
+				</wadl:response>
+				<wadl:response status="404">
+					<wadl:doc title="Not Found" />
+				</wadl:response>
+			</wadl:method>
+		</wadl:resource>
+
+		<wadl:resource path="/SoilData/Collection/{collection_id}">
+			<wadl:doc>This resource provides general information about a specific soil data collection.</wadl:doc>
+			<wadl:method name="GET" id="getCollectionDescription">
+				<wadl:doc>Information about a soil data collection.</wadl:doc>
+				<wadl:doc title="Example">/SoilData/Collection/1</wadl:doc>
+				<wadl:request>
+					<wadl:param name="collection_id" style="template" type="xsi:string" required="true">
+						<wadl:doc>Collection identifier, as found in the Collection@id attribute of the getListOfCollections() response document.</wadl:doc>
+					</wadl:param>
+				</wadl:request>
+				<wadl:response status="200">
+					<wadl:doc title="OK" />
+					<wadl:representation mediaType="application/xml">
+						<wadl:doc title="XML">/SoilData/Collection document.</wadl:doc>
+					</wadl:representation>
+				</wadl:response>
+				<wadl:response status="404">
+					<wadl:doc title="Not Found" />
+				</wadl:response>
+			</wadl:method>
+		</wadl:resource>
+
+		<wadl:resource path="/SoilData/Collection/{collection_id}/Properties">
+			<wadl:doc>This resource provides a complete list of the soil attributes that are present for a specific collection.</wadl:doc>
+			<wadl:method name="GET" id="getListOfProperties">
+				<wadl:doc>A list of attribute definitions for a soil data collection.</wadl:doc>
+				<wadl:doc title="Example">/SoilData/Collection/1/Properties</wadl:doc>
+				<wadl:request>
+					<wadl:param name="collection_id" style="template" type="xsi:string" required="true">
+						<wadl:doc>Collection identifier, as found in the Collection@id attribute of the getListOfCollections() response document.</wadl:doc>
+					</wadl:param>
+				</wadl:request>
+				<wadl:response status="200">
+					<wadl:doc title="OK" />
+					<wadl:representation mediaType="application/xml">
+						<wadl:doc title="XML">/SoilData/Collection/Properties document.</wadl:doc>
+					</wadl:representation>
+				</wadl:response>
+				<wadl:response status="404">
+					<wadl:doc title="Not Found" />
+				</wadl:response>
+			</wadl:method>
+		</wadl:resource>
+
+		<wadl:resource path="/SoilData/Collection/{collection_id}/Property/{property_id}">
+			<wadl:doc>This resource describes a soil property that is defined for a collection.</wadl:doc>
+			<wadl:method name="GET" id="getProperty">
+				<wadl:doc>A definition for a soil data property.</wadl:doc>
+				<wadl:doc title="Example">/SoilData/Collection/1/Property/R_ON_RPT.PS_SAND_T</wadl:doc>
+				<wadl:request>
+					<wadl:param name="collection_id" style="template" type="xsi:string" required="true">
+						<wadl:doc>Collection identifier, as found in the Collection@id attribute of the getListOfCollections() response document.</wadl:doc>
+					</wadl:param>
+					<wadl:param name="property_id" style="template" type="xsi:string" required="true">
+						<wadl:doc>Property identifier, as found in the Property@id attribute of the getListOfProperties() response document.</wadl:doc>
+					</wadl:param>
+				</wadl:request>
+				<wadl:response status="200">
+					<wadl:doc title="OK" />
+					<wadl:representation mediaType="application/xml">
+						<wadl:doc title="XML">/SoilData/Collection/Property document.</wadl:doc>
+					</wadl:representation>
+				</wadl:response>
+				<wadl:response status="404">
+					<wadl:doc title="Not Found" />
+				</wadl:response>
+			</wadl:method>
+		</wadl:resource>
+
+		<wadl:resource path="/SoilData/Collection/{collection_id}/Soils">
+			<wadl:doc>This resource provides a complete list of the soils  that are part of a specific collection.</wadl:doc>
+			<wadl:method name="GET" id="getListOfSoils">
+				<wadl:doc>A list of the soils included in a soil data collection.</wadl:doc>
+				<wadl:doc title="Example">/SoilData/Collection/1/Soils</wadl:doc>
+				<wadl:request>
+					<wadl:param name="collection_id" style="template" type="xsi:string" required="true">
+						<wadl:doc>Collection identifier, as found in the Collection@id attribute of the getListOfCollections() response document.</wadl:doc>
+					</wadl:param>
+				</wadl:request>
+				<wadl:response status="200">
+					<wadl:doc title="OK" />
+					<wadl:representation mediaType="application/xml">
+						<wadl:doc title="XML">/SoilData/Collection/Soils document.</wadl:doc>
+					</wadl:representation>
+				</wadl:response>
+				<wadl:response status="404">
+					<wadl:doc title="Not Found" />
+				</wadl:response>
+			</wadl:method>
+		</wadl:resource>
+
+		<wadl:resource path="/SoilData/Collection/{collection_id}/Soil/{soil_id}">
+			<wadl:doc>This resource provides all known properties for a specified soil.</wadl:doc>
+			<wadl:method name="GET" id="getSoilData">
+				<wadl:doc>Data for a specific soil.</wadl:doc>
+				<wadl:doc title="Example">/SoilData/Collection/1/Soil/0000497</wadl:doc>
+				<wadl:request>
+					<wadl:param name="collection_id" style="template" type="xsi:string" required="true">
+						<wadl:doc>Collection identifier, as found in the Collection@id attribute of the getListOfCollections() response document.</wadl:doc>
+					</wadl:param>
+					<wadl:param name="soil_id" style="template" type="xsi:string" required="true">
+						<wadl:doc>Soil identifier, as found in the Soil@id attribute of the getListOfSoils() response document.</wadl:doc>
+					</wadl:param>
+				</wadl:request>
+				<wadl:response status="200">
+					<wadl:doc title="OK" />
+					<wadl:representation mediaType="application/xml">
+						<wadl:doc title="XML">/SoilData/Collection/SoilSet document.</wadl:doc>
+					</wadl:representation>
+				</wadl:response>
+				<wadl:response status="404">
+					<wadl:doc title="Not Found" />
+				</wadl:response>
+			</wadl:method>
+		</wadl:resource>
+
+		<wadl:resource path="/SoilData/wadl.xml">
+			<wadl:doc>Web Application Description Language (WADL) document</wadl:doc>
+			<wadl:method name="GET" id="getWADL">
+				<wadl:doc>Returns a WADL document describing this service</wadl:doc>
+				<wadl:doc title="Example">/SoilData/wadl.xml</wadl:doc>
+				<wadl:request>
+				</wadl:request>
+				<wadl:response status="200">
+					<wadl:doc title="OK" />
+					<wadl:representation mediaType="application/vnd.sun.wadl+xml">
+						<wadl:doc title="XML">Web Application Description Language (WADL) document.</wadl:doc>
+					</wadl:representation>
+				</wadl:response>
+				<wadl:response status="404">
+					<wadl:doc title="Not Found" />
+				</wadl:response>
+			</wadl:method>
+		</wadl:resource>
+
+	</wadl:resources>
+</wadl:application>
+ 

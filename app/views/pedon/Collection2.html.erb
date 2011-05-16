@@ -1,0 +1,29 @@
+<%= render :partial => 'header' %>
+<h1>SoilData</h1>
+<section class="SoilData" id="0.2">
+	<div class="metadata">
+		<h2>Application Information</h2>
+		<ul>
+			<li id="serviceURL"><a href="<%= @urls.service %>">Application Home</a></li>
+			<li id="wadl"><a href="<%= @urls.help %>">Application Description</a></li>
+			<li id="collections"><a href="<%= @urls.collections %>">Soil Data Collections</a></li>
+		</ul>
+	</div>
+	<div class="collection">
+		<h2>Collection</h2>
+		<dl>
+			<dt>Title</dt>
+			<dd id="title"><%= @collection.Title %></dd>
+			<dt>Purpose</dt>
+			<dd id="purpose"><%= @collection.Purpose %></dd>
+			<dt>Title</dt>
+			<dd id="abstract"><%= @collection.Abstract %></dd>
+		</dl>
+
+		<ul>
+			<li id="properties"><a href="<%= @urls.properties %>">Soil Properties</a></li>
+			<li id="soils"><a href="<%= @urls.soils %>">Soil Profiles</a></li>
+		</ul>
+	</div>
+</section>
+<%= render :partial => 'footer' %>

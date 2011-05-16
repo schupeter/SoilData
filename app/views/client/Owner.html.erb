@@ -1,0 +1,27 @@
+<%= render :partial => 'header' %>
+<h1>SoilML Client - Owner information</h1>
+
+<p>SOILDATA URL:  <%= @params["SOILDATAURL"]%></p>
+
+<p>HELP URL:  <a href="<%= @soilData.text_at("//SoilData/@serviceURL")%><%= @soilData.text_at("//SoilData/@wadl")%>">raw</a></p>
+
+<p>Collections URL:  <a href="<%= @soilData.text_at("//SoilData/@serviceURL")%><%= @soilData.text_at("//SoilData/@collections")%>">raw</a> <a href="Collections?CollectionsURL=<%= @soilData.text_at("//SoilData/@serviceURL")%><%= @soilData.text_at("//SoilData/@collections")%>">view</a></p>
+
+<p>Owner:  <a href="<%= @soilData.text_at("//SoilData/Owner/@website")%>"><%= @soilData.text_at("//SoilData/Owner/@name")%></a></p>
+
+<h3>Contact</h3>
+<p>Name:  <%= @soilData.text_at("//SoilData/Owner/Contact/@name")%></p>
+<p>Title:  <%= @soilData.text_at("//SoilData/Owner/Contact/@title")%></p>
+<p>Email:  <%= @soilData.text_at("//SoilData/Owner/Contact/@email")%></p>
+<p>Phone:  <%= @soilData.text_at("//SoilData/Owner/Contact/@phone")%></p>
+<p>FAX:  <%= @soilData.text_at("//SoilData/Owner/Contact/@fax")%></p>
+<p>Address:  <br />
+<%= @soilData.text_at("//SoilData/Owner/Contact/Address/DeliveryPoint")%><br />
+<%= @soilData.text_at("//SoilData/Owner/Contact/Address/City")%>, 
+<%= @soilData.text_at("//SoilData/Owner/Contact/Address/AdministrativeArea")%><br />
+<%= @soilData.text_at("//SoilData/Owner/Contact/Address/Country")%>, 
+<%= @soilData.text_at("//SoilData/Owner/Contact/Address/PostalCode")%>
+</p>
+
+
+<%= render :partial => 'footer' %>

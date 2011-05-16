@@ -1,0 +1,108 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type="text/xsl" href="xmlTree.xsl"?>
+<!DOCTYPE tree SYSTEM 'tree.dtd'>
+<tree>
+	<branch id="html">
+		<branchText>HTML</branchText>
+		<leaf>
+			<leafText>Tags, Tags, Tags</leafText>
+			<link>#</link>
+		</leaf>
+		<leaf>
+			<leafText>Hyperlinks</leafText>
+			<link>#</link>
+		</leaf>
+		<leaf>
+			<leafText>Images</leafText>
+			<link>#</link>
+		</leaf>
+		<leaf>
+			<leafText>Tables</leafText>
+			<link>#</link>
+		</leaf>
+		<leaf>
+			<leafText>Forms</leafText>
+			<link>#</link>
+		</leaf>
+	</branch>
+	<branch id="css">
+		<branchText>CSS</branchText>
+		<leaf>
+			<leafText>Inline Styles</leafText>
+			<link>#</link>
+		</leaf>
+		<leaf>
+			<leafText>Document Wide Styles</leafText>
+			<link>#</link>
+		</leaf>
+		<leaf>
+			<leafText>External Style Sheets</leafText>
+			<link>#</link>
+		</leaf>
+		<leaf>
+			<leafText>Formatting Text</leafText>
+			<link>#</link>
+		</leaf>
+		<leaf>
+			<leafText>Positioning Text</leafText>
+			<link>#</link>
+		</leaf>
+	</branch>
+	<branch id="javascript">
+		<branchText>JavaScript</branchText>
+		<leaf>
+			<leafText>The Basics</leafText>
+			<link>#</link>
+		</leaf>
+		<leaf>
+			<leafText>Working with Images</leafText>
+			<link>#</link>
+		</leaf>
+		<leaf>
+			<leafText>Controlling Frames</leafText>
+			<link>#</link>
+		</leaf>
+		<leaf>
+			<leafText>Browser Windows</leafText>
+			<link>#</link>
+		</leaf>
+		<leaf>
+			<leafText>Form Validation</leafText>
+			<link>#</link>
+		</leaf>
+		<leaf>
+			<leafText>Handling Events</leafText>
+			<link>#</link>
+		</leaf>
+	</branch>
+	<branch id="dhtml">
+		<branchText>DHTML</branchText>
+		<leaf>
+			<leafText>Object Detection</leafText>
+			<link>#</link>
+		</leaf>
+		<branch id="animation">
+			<branchText>Animation</branchText>
+			<leaf>
+				<leafText>Path Animation</leafText>
+				<link>#</link>
+			</leaf>
+			<leaf>
+				<leafText>Point To Point Animation</leafText>
+				<link>#</link>
+			</leaf>
+		</branch>
+		<leaf>
+			<leafText>Menus</leafText>
+			<link>#</link>
+		</leaf>
+		<leaf>
+			<leafText>Tabbed User Interface</leafText>
+			<link>#</link>
+		</leaf>
+		<leaf>
+			<leafText>Trees</leafText>
+			<link>#</link>
+		</leaf>
+	</branch>
+</tree>

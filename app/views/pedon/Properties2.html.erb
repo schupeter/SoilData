@@ -1,0 +1,22 @@
+<%= render :partial => 'header' %>
+<h1>SoilData</h1>
+<section class="SoilData" id="0.2">
+	<div class="metadata">
+		<h2>Application Information</h2>
+		<ul>
+			<li id="serviceURL"><a href="<%= @urls.service %>">Application Home</a></li>
+			<li id="wadl"><a href="<%= @urls.help %>">Application Description</a></li>
+			<li id="collections"><a href="<%= @urls.collections %>">Soil Data Collections</a></li>
+			<li id="collection"><a href="<%= @urls.collection %>"><%= @collection.Title %></a></li>
+			<li id="soils"><a href="<%= @urls.soils %>">Soil Profiles</a></li>
+		</ul>
+	</div>
+	<div class="properties">
+		<h2>Soil Properties</h2>
+		<ul>
+			<% for property in @properties do %><li><a href="<%= @urls.propertyBase %><%= URI.escape(property.property_id, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")) %>"><%= property.title %></a> (<i><%= property.unit %></i>)</li>
+			<% end %>
+		</ul>
+	</div>
+</section>
+<%= render :partial => 'footer' %>

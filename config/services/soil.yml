@@ -1,0 +1,88 @@
+# TJS config file.  
+#
+# Edit the example contents as appropriate.  Note that the 
+# field names and indentation are important!!!  Just edit the 
+# content after the colon (:).
+# In the Languages section, add language codes as desired (e.g. en-CA) and fill in contents
+
+OperationsMetadata:
+  HTTP:
+    Get: http://metamapper.com/tjs/service?
+    Post: http://metamapper.com/tjs/service?
+  Versions: 1.0
+  GetData:
+    GeolinkidsLimit: 1000
+    AttributeLimit: 1
+  JoinData:
+    AttributeLimit: 1
+
+DefaultLanguage: en
+
+Languages:
+  en:
+    ServiceIdentification:
+      Title: Metamapper TJS server
+      Abstract: Metamapper - Table Joining Service.
+      Keywords: 
+       - TJS
+       - GDAS
+      Fees: none
+      AccessConstraints: none
+    ServiceProvider:
+      ProviderName: Spatial Information Services
+      ProviderSite: http://metamapper.com
+      ServiceContact:
+        IndividualName: Peter Schut
+        PositionName: System Administrator
+        ContactInfo:
+          Phone:
+            Voice: +1 613 759-1874
+            Facsimile: +1 613 759-1937
+          Address:
+            DeliveryPoint: 1788 Upper Perth Road, RR#2
+            City: Almonte
+            AdministrativeArea: ON
+            PostalCode: K0A1A0
+            Country: Canada
+            ElectronicMailAddress: pschut@gmail.com
+
+OutputMechanisms:
+  WMS:
+    Title:
+      en: Web Map Server v1.1.1
+      fr: Web Map Server v1.1.1
+    Abstract:
+      en: The OpenGIS® Web Map Service Interface Standard (WMS) provides a simple HTTP interface for requesting geo-registered map images from one or more distributed geospatial databases. A WMS request defines the geographic layer(s) and area of interest to be processed. The response to the request is one or more geo-registered map images (returned as JPEG, PNG, etc) that can be displayed in a browser application. The interface also supports the ability to specify whether the returned images should be transparent so that layers from multiple servers can be combined or not.
+      fr: 
+    Reference: http://schemas.opengis.net/wms/1.1.1/
+  shapefile:
+    Title: 
+      en: ESRI shapefile
+      fr: ESRI shapefile
+    Abstract: 
+      en: ESRI shapefile currently unavailable
+      fr: ESRI shapefile n'est pas disponible a ce momente
+    Reference: http://en.wikipedia.org/wiki/Shapefile
+
+OutputStylings:
+  MapServer:
+    Title:
+      en: MapServer .MAP file
+      fr: MapServer .MAP file
+    Abstract:
+      en: The MapServer MAP file allows styling via CLASS descriptions.
+      fr: 
+    Reference: http://ms.gis.umn.edu/docs/reference/mapfile/class
+    Schema: xx
+  ReclassPalette:
+    Title: 
+      en: MetaMapper Reclassification Palette
+      fr: xx
+    Abstract: 
+      en: Reclassification hash URL, semicolon, and Palette URL
+      fr: xx
+    Reference: xx
+    Schema: xx
+
+Classification:
+  Schema: http://foo.bar/foo

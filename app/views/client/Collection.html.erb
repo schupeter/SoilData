@@ -1,0 +1,32 @@
+<%= render :partial => 'header' %>
+<h1>SoilML Client</h1>
+
+<p>Collection number <%= @soilData.text_at("//SoilData/Collection/@id")%> (<%= @soilData.text_at("//SoilData/Collection/@title")%>) for the SoilData repository at <a href="<%= @soilData.text_at("//SoilData/@serviceURL")%>"><%= @soilData.text_at("//SoilData/@serviceURL")%></a></p>
+
+<p>Purpose:  <%= @soilData.text_at("//SoilData/Collection/Purpose")%></p>
+
+<p>Abstract:  <%= @soilData.text_at("//SoilData/Collection/Abstract")%></p>
+
+<p>Properties:  <%= @soilData.text_at("//SoilData/Collection/@propertiesURL")%></p>
+
+<p>Soils:  <%= @soilData.text_at("//SoilData/Collection/@soilsURL")%></p>
+
+
+<table cellpadding="5">
+	<tr>
+		<th>ID</th>
+		<th>Title</th>
+		<th>URL</th>
+	</tr>
+	<% for collection in @soilData.search("//SoilData/Collections/Collection") do %>
+	<tr>
+		<td><%= collection.text_at("@id")%></td>
+		<td><%= collection.text_at("@title")%></td>
+		<td><a href="<%= @soilData.text_at("//SoilData/@serviceURL")%><%= collection.text_at("@collectionURL")%>">raw data</a></td>
+		<td><a href="Collection?CollectionURL=<%= @soilData.text_at("//SoilData/@serviceURL")%><%= collection.text_at("@collectionURL")%>">view</a></td>
+	</tr>
+	<% end %>
+</table>
+
+
+<%= render :partial => 'footer' %>
